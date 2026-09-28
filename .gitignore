@@ -1,0 +1,13 @@
+# Raw dataset
+AI_IoT_Project/data/original/
+
+# Intermediate preprocessing CSVs
+AI_IoT_Project/data/processed/lights_timestamp_processed.csv
+AI_IoT_Project/data/processed/lights_1min.csv
+AI_IoT_Project/data/processed/lights_model_ready.csv
+AI_IoT_Project/data/processed/train_data.csv
+AI_IoT_Project/data/processed/test_data.csv
+
+# Python cache
+__pycache__/
+*.pyc

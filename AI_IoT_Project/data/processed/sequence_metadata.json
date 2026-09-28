@@ -1,0 +1,74 @@
+{
+  "lookback": 30,
+  "num_features": 5,
+  "feature_names": [
+    "voltage (V rms)",
+    "current (A rms)",
+    "frequency (Hz)",
+    "pf",
+    "power (W)"
+  ],
+  "target_name": "power (W)",
+  "scaler_type": "StandardScaler",
+  "scaler_fitted_on": "train_data.csv ONLY (111,338 rows)",
+  "X_train_shape": [
+    110678,
+    30,
+    5
+  ],
+  "y_train_shape": [
+    110678,
+    1
+  ],
+  "X_test_shape": [
+    27714,
+    30,
+    5
+  ],
+  "y_test_shape": [
+    27714,
+    1
+  ],
+  "num_train_sequences": 110678,
+  "num_test_sequences": 27714,
+  "train_segment_counts": {
+    "0": 280,
+    "1": 9644,
+    "2": 9990,
+    "3": 4253,
+    "4": 5515,
+    "5": 4408,
+    "6": 4306,
+    "7": 265,
+    "8": 678,
+    "9": 4409,
+    "10": 5514,
+    "11": 9990,
+    "12": 5555,
+    "13": 2237,
+    "14": 1969,
+    "15": 9989,
+    "16": 6795,
+    "17": 3051,
+    "18": 3986,
+    "19": 5908,
+    "20": 9929,
+    "21": 2007
+  },
+  "test_segment_counts": {
+    "21": 7893,
+    "22": 9,
+    "23": 9883,
+    "24": 9929
+  },
+  "boundary_crosses_train": 0,
+  "boundary_crosses_test": 0,
+  "scaled_train_features_min": -6.592660903930664,
+  "scaled_train_features_max": 37.33147430419922,
+  "scaled_test_features_min": -6.592660903930664,
+  "scaled_test_features_max": 24.19280433654785,
+  "scaled_train_target_min": -0.26859840750694275,
+  "scaled_train_target_max": 37.33147430419922,
+  "scaled_test_target_min": -0.2679347097873688,
+  "scaled_test_target_max": 24.19280433654785
+}
