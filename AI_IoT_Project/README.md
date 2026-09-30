@@ -33,5 +33,27 @@ This project develops an end-to-end deep learning pipeline to **forecast electri
   - `results/training_loss.png` & `results/training_mae.png` (Convergence plots)
 
 ### Part 3: Model Evaluation and Electricity-Demand Forecasting
-- **Status:** Upcoming stage
-- **Objective:** Evaluate the trained model (`models/lstm_model.keras`) on the untouched test set (`X_test.npy`, `y_test.npy`), compute unscaled physical error metrics (MAE, RMSE, MAPE in Watts), and visualize electricity demand forecasts.
+- **Notebook:** `notebooks/03_evaluation.ipynb`
+- **Objective:** Evaluate the trained LSTM model on the unseen test dataset (`X_test.npy`, `y_test.npy`), quantify regression accuracy in physical units (Watts), analyze prediction errors, and prepare clean, production-ready forecast artifacts for frontend integration.
+- **Evaluation Methodology & Leakage Protection:**
+  - The model was evaluated on 27,714 completely unseen chronological test sequences (April 13 – May 3, 2026).
+  - Test data was never seen during training or hyperparameter optimization.
+  - The `target_scaler` was NOT refitted on test data.
+  - Zero data leakage was introduced.
+- **Evaluation Metrics (Unscaled, Physical Watts):**
+  - **Mean Absolute Error (MAE):** `3.3016 W`
+  - **Mean Squared Error (MSE):** `942.9799 W²`
+  - **Root Mean Squared Error (RMSE):** `30.7080 W`
+  - **Coefficient of Determination (R²):** `0.252099`
+  - **Mean Bias Error:** `-0.1490 W` (Virtually zero systematic bias)
+- **Test Prediction vs. Future Forecasting:**
+  - **Test Predictions (`test_predictions.csv`):** Authentic one-step-ahead (1-minute) predictions where the model receives preceding 30-minute real multivariate sensor telemetry.
+  - **Future Forecasting (`future_forecast_60min`):** 60-minute forward autoregressive demonstration beyond test horizon where exogenous variables (voltage, current, frequency, power factor) are held at baseline persistence while active power is recursively fed back.
+- **Generated Output Artifacts:**
+  - `results/test_predictions.csv` — Full 27,714-row chronological evaluation table (`timestamp`, `actual_power_w`, `predicted_power_w`, `error_w`).
+  - `results/evaluation_metrics.json` — Machine-readable evaluation metrics and error spread statistics.
+  - `results/forecast_data.json` — Lightweight, dashboard-ready JSON payload with metrics, recent 180-min series, and 60-min forward forecast.
+  - `results/FRONTEND_DATA_GUIDE.md` — Complete developer integration manual for dashboard and UI engineers.
+  - `results/actual_vs_predicted.png` — Dual-panel time-series tracking plot (high-resolution 3-day window and full test profile).
+  - `results/actual_vs_predicted_scatter.png` — Scatter plot with ideal $y = x$ reference line.
+  - `results/error_distribution.png` — Residual error distribution histogram and boxplot.

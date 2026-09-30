@@ -1,0 +1,25 @@
+{
+  "model_name": "LSTM_Power_Forecaster",
+  "target": "power",
+  "target_unit": "W",
+  "test_samples": 27714,
+  "mae_w": 3.3016,
+  "mse_w2": 942.9799,
+  "rmse_w": 30.708,
+  "r2": 0.252099,
+  "error_statistics_w": {
+    "mean_error": -0.149,
+    "std_error": 30.7076,
+    "max_abs_error": 1010.1036,
+    "min_error": -714.6592,
+    "max_error": 1010.1036
+  },
+  "data_ranges_w": {
+    "actual_min": 16.73,
+    "actual_max": 1245.2,
+    "actual_mean": 23.43,
+    "predicted_min": 10.65,
+    "predicted_max": 812.57,
+    "predicted_mean": 23.58
+  }
+}
