@@ -1,0 +1,30 @@
+{
+  "name": "ai-for-iot-smart-energy-consumption-prediction",
+  "version": "1.0.0",
+  "description": "An end-to-end Deep Learning and IoT energy forecasting system that predicts **active real power demand in Watts (W)** from high-resolution electrical telemetry collected by **PZEM-004T + ESP32** smart meters.",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild main.jsx --bundle --outfile=frontend/dist/bundle.js --minify --loader:.js=jsx --loader:.jsx=jsx",
+    "dev": "esbuild main.jsx --bundle --outfile=frontend/dist/bundle.js --watch --loader:.js=jsx --loader:.jsx=jsx",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arpita09Verma/AI-for-IoT-Smart-Energy-Consumption-Prediction.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Arpita09Verma/AI-for-IoT-Smart-Energy-Consumption-Prediction/issues"
+  },
+  "homepage": "https://github.com/Arpita09Verma/AI-for-IoT-Smart-Energy-Consumption-Prediction#readme",
+  "dependencies": {
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  }
+}

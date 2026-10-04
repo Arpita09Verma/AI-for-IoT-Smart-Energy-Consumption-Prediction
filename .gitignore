@@ -11,3 +11,7 @@ AI_IoT_Project/data/processed/test_data.csv
 # Python cache
 __pycache__/
 *.pyc
+
+# Node modules
+node_modules/
+
