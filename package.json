@@ -4,6 +4,8 @@
   "description": "An end-to-end Deep Learning and IoT energy forecasting system that predicts **active real power demand in Watts (W)** from high-resolution electrical telemetry collected by **PZEM-004T + ESP32** smart meters.",
   "main": "index.js",
   "scripts": {
+    "start": "py -3.12 server.py",
+    "server": "py -3.12 server.py",
     "build": "esbuild main.jsx --bundle --outfile=frontend/dist/bundle.js --minify --loader:.js=jsx --loader:.jsx=jsx",
     "dev": "esbuild main.jsx --bundle --outfile=frontend/dist/bundle.js --watch --loader:.js=jsx --loader:.jsx=jsx",
     "test": "echo \"Error: no test specified\" && exit 1"

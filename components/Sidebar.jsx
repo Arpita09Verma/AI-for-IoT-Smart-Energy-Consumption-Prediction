@@ -4,13 +4,13 @@ import React from 'react';
  * Sidebar Navigation Component
  * Features:
  * - Brand title: "ENERGY AI"
- * - 6 Main navigation links with smooth scroll & scrollspy active tracking:
- *   1. Overview
- *   2. Forecast
- *   3. Model Performance
- *   4. Historical Data
- *   5. Error Analysis
- *   6. Methodology
+ * - 6 Main navigation links with dedicated URL route mapping:
+ *   1. Overview (/dashboard or /)
+ *   2. Forecast (/forecast)
+ *   3. Model Performance (/analytics or /model-performance)
+ *   4. Historical Data (/historical)
+ *   5. Error Analysis (/error-analysis)
+ *   6. Methodology (/methodology)
  * - Operational model status indicator:
  *   "Model: LSTM_Power_Forecaster"
  *   "Status: Ready" (or "Status: Data Missing")
@@ -27,6 +27,7 @@ export const Sidebar = ({
   const navItems = [
     {
       id: 'overview-section',
+      path: '/dashboard',
       num: '01',
       title: 'Overview',
       icon: (
@@ -40,6 +41,7 @@ export const Sidebar = ({
     },
     {
       id: 'forecast-section',
+      path: '/forecast',
       num: '02',
       title: 'Forecast',
       icon: (
@@ -51,6 +53,7 @@ export const Sidebar = ({
     },
     {
       id: 'model-performance-section',
+      path: '/analytics',
       num: '03',
       title: 'Model Performance',
       icon: (
@@ -70,6 +73,7 @@ export const Sidebar = ({
     },
     {
       id: 'historical-data-section',
+      path: '/historical',
       num: '04',
       title: 'Historical Data',
       icon: (
@@ -85,6 +89,7 @@ export const Sidebar = ({
     },
     {
       id: 'error-analysis-section',
+      path: '/error-analysis',
       num: '05',
       title: 'Error Analysis',
       icon: (
@@ -98,6 +103,7 @@ export const Sidebar = ({
     },
     {
       id: 'methodology-section',
+      path: '/methodology',
       num: '06',
       title: 'Methodology',
       icon: (
@@ -109,10 +115,10 @@ export const Sidebar = ({
     }
   ];
 
-  const handleLinkClick = (e, targetId) => {
+  const handleLinkClick = (e, item) => {
     e.preventDefault();
     if (onNavigate) {
-      onNavigate(targetId);
+      onNavigate(item.id, item.path);
     }
     if (window.innerWidth <= 1024 && onClose) {
       onClose();
@@ -169,10 +175,11 @@ export const Sidebar = ({
                 return (
                   <li className="sidebar-nav-item" key={item.id}>
                     <a
-                      href={`#${item.id}`}
+                      href={item.path}
                       className={`sidebar-nav-link ${isActive ? 'active' : ''}`}
                       data-section={item.id}
-                      onClick={(e) => handleLinkClick(e, item.id)}
+                      data-path={item.path}
+                      onClick={(e) => handleLinkClick(e, item)}
                     >
                       <span className="nav-icon" aria-hidden="true">
                         {item.icon}
@@ -218,7 +225,7 @@ export const Sidebar = ({
                 <line x1="12" y1="16" x2="12" y2="12"></line>
                 <line x1="12" y1="8" x2="12.01" y2="8"></line>
               </svg>
-              <span>Pre-trained checkpoint &bull; Evaluation mode</span>
+              <span>Trained LSTM Model &bull; Active Inference</span>
             </div>
           </div>
 

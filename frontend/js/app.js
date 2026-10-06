@@ -122,11 +122,11 @@ function renderDashboard(loader, isUpdate = false) {
   const statusEl = document.getElementById('telemetryStatusText');
   if (statusEl) {
     if (metrics && metrics.test_samples) {
-      statusEl.textContent = `PZEM-004T Online • ${metrics.test_samples.toLocaleString()} Authentic Inferences`;
+      statusEl.textContent = `Historical Mode — ${metrics.test_samples.toLocaleString()} Trained Inferences`;
     } else if (loader.errors && loader.errors.forecastJson) {
-      statusEl.textContent = `Telemetry Partial • ML Results Unavailable`;
+      statusEl.textContent = `Historical Mode — ML Results Unavailable`;
     } else {
-      statusEl.textContent = `PZEM-004T Online • Standby`;
+      statusEl.textContent = `Historical Mode — Trained on PZEM-004T Data`;
     }
   }
 

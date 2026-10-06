@@ -58,8 +58,8 @@ export const ActualVsPredictedChart = ({
     const predictedValues = sliced.map(d => d.predicted_power_w);
 
     const gradActual = ctx.createLinearGradient(0, 0, 0, 400);
-    gradActual.addColorStop(0, 'rgba(14, 165, 233, 0.16)');
-    gradActual.addColorStop(1, 'rgba(14, 165, 233, 0.0)');
+    gradActual.addColorStop(0, 'rgba(37, 99, 235, 0.10)');
+    gradActual.addColorStop(1, 'rgba(37, 99, 235, 0.0)');
 
     chartInstanceRef.current = new Chart(ctx, {
       type: 'line',
@@ -69,12 +69,12 @@ export const ActualVsPredictedChart = ({
           {
             label: 'Actual Power (W)',
             data: actualValues,
-            borderColor: '#0ea5e9',
+            borderColor: '#2563eb',
             backgroundColor: gradActual,
             borderWidth: 2,
             pointRadius: 0,
             pointHoverRadius: 5,
-            pointHoverBackgroundColor: '#0ea5e9',
+            pointHoverBackgroundColor: '#2563eb',
             pointHoverBorderColor: '#ffffff',
             pointHoverBorderWidth: 1.5,
             tension: 0,
@@ -83,13 +83,13 @@ export const ActualVsPredictedChart = ({
           {
             label: 'Predicted Power (W)',
             data: predictedValues,
-            borderColor: '#f97316',
+            borderColor: '#f59e0b',
             backgroundColor: 'transparent',
             borderWidth: 2,
             borderDash: [5, 4],
             pointRadius: 0,
             pointHoverRadius: 5,
-            pointHoverBackgroundColor: '#f97316',
+            pointHoverBackgroundColor: '#f59e0b',
             pointHoverBorderColor: '#ffffff',
             pointHoverBorderWidth: 1.5,
             tension: 0,
@@ -106,9 +106,21 @@ export const ActualVsPredictedChart = ({
             display: true,
             position: 'top',
             align: 'end',
-            labels: { boxWidth: 9, padding: 14, font: { weight: '500' } }
+            labels: {
+              boxWidth: 9,
+              padding: 14,
+              color: '#334155',
+              font: { weight: '600', family: "'Inter', sans-serif", size: 12 }
+            }
           },
           tooltip: {
+            backgroundColor: '#0f172a',
+            titleColor: '#ffffff',
+            bodyColor: '#cbd5e1',
+            borderColor: '#334155',
+            borderWidth: 1,
+            padding: 10,
+            cornerRadius: 8,
             callbacks: {
               title: (items) => {
                 const idx = items[0].dataIndex;
@@ -131,14 +143,14 @@ export const ActualVsPredictedChart = ({
         },
         scales: {
           x: {
-            grid: { color: 'rgba(255, 255, 255, 0.04)' },
-            title: { display: true, text: 'Observation Time (1-minute steps UTC)', color: '#64748b', font: { size: 11 } },
+            grid: { color: '#f1f5f9' },
+            title: { display: true, text: 'Observation Time (1-minute steps UTC)', color: '#475569', font: { size: 11, weight: '500' } },
             ticks: { maxTicksLimit: 14, color: '#64748b', font: { family: "'JetBrains Mono', monospace", size: 10 } }
           },
           y: {
-            grid: { color: 'rgba(255, 255, 255, 0.05)' },
-            title: { display: true, text: 'Power Demand (Watts)', color: '#94a3b8', font: { weight: '600', size: 12 } },
-            ticks: { color: '#94a3b8', font: { family: "'JetBrains Mono', monospace", size: 11 }, callback: (v) => `${v} W` }
+            grid: { color: '#f1f5f9' },
+            title: { display: true, text: 'Power Demand (Watts)', color: '#475569', font: { weight: '600', size: 12 } },
+            ticks: { color: '#64748b', font: { family: "'JetBrains Mono', monospace", size: 11 }, callback: (v) => `${v} W` }
           }
         }
       }
@@ -268,7 +280,7 @@ export const ActualVsPredictedChart = ({
           {showStaticFallback && (
             <div
               className="gallery-img-wrap"
-              style={{ display: 'flex', height: 440, background: '#050811', borderRadius: 'var(--radius-md)' }}
+              style={{ display: 'flex', height: 440, background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 'var(--radius-md)' }}
             >
               <img
                 src="AI_IoT_Project/results/actual_vs_predicted.png"

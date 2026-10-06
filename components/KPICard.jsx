@@ -35,9 +35,15 @@ export const KPICard = ({
 
   const typeClassMap = {
     actual: 'actual-metric',
+    mae: 'mae-metric',
     predicted: 'predicted-metric',
+    rmse: 'rmse-metric',
     forecast: 'forecast-metric',
+    r2: 'r2-metric',
+    positive: 'positive-metric',
     bias: 'bias-metric',
+    samples: 'samples-metric',
+    accent: 'accent-metric',
     neutral: 'neutral-metric'
   };
 

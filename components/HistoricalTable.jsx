@@ -250,9 +250,9 @@ export const HistoricalTable = ({
             <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Page Size:</span>
             <select
               style={{
-                background: 'var(--bg-surface)',
+                background: '#ffffff',
                 border: '1px solid var(--border-default)',
-                color: '#ffffff',
+                color: 'var(--text-primary)',
                 padding: '0.35rem 0.55rem',
                 borderRadius: 'var(--radius-sm)',
                 fontSize: '0.78rem'
@@ -361,7 +361,7 @@ export const HistoricalTable = ({
 
                   let residualBadge = null;
                   if (absErr < 0.005) {
-                    residualBadge = <span className="legend-chip" style={{ background: 'rgba(255,255,255,0.06)', color: 'var(--text-secondary)', fontSize: '0.7rem' }}>Exact Match</span>;
+                    residualBadge = <span className="legend-chip" style={{ background: '#f1f5f9', color: '#475569', border: '1px solid #cbd5e1', fontSize: '0.7rem' }}>Exact Match</span>;
                   } else if (errorVal > 0) {
                     residualBadge = <span className="legend-chip chip-positive" title="Under-prediction: Model predicted less power than actual demand" style={{ fontSize: '0.7rem' }}>Under-pred (+)</span>;
                   } else {
@@ -370,17 +370,17 @@ export const HistoricalTable = ({
 
                   let errorStyle = { color: 'var(--text-primary)' };
                   if (absErr > 20) {
-                    errorStyle = { color: 'var(--color-error-light)', fontWeight: 700 };
+                    errorStyle = { color: '#dc2626', fontWeight: 700 };
                   } else if (absErr > 5) {
-                    errorStyle = { color: '#fbbf24', fontWeight: 600 };
+                    errorStyle = { color: '#d97706', fontWeight: 600 };
                   }
 
                   return (
                     <tr key={`${row.timestamp}-${rowNum}`}>
                       <td className="text-mono" style={{ color: 'var(--text-dim)', fontSize: '0.74rem' }}>{rowNum}</td>
-                      <td className="text-mono" style={{ color: '#ffffff', fontSize: '0.8rem', fontWeight: 500 }}>{row.timestamp}</td>
-                      <td className="text-mono" style={{ color: 'var(--color-actual-light)', fontWeight: 600 }}>{row.actual_power_w.toFixed(2)} W</td>
-                      <td className="text-mono" style={{ color: 'var(--color-predicted-light)', fontWeight: 600 }}>{row.predicted_power_w.toFixed(2)} W</td>
+                      <td className="text-mono" style={{ color: 'var(--text-primary)', fontSize: '0.8rem', fontWeight: 500 }}>{row.timestamp}</td>
+                      <td className="text-mono" style={{ color: '#2563eb', fontWeight: 600 }}>{row.actual_power_w.toFixed(2)} W</td>
+                      <td className="text-mono" style={{ color: '#d97706', fontWeight: 600 }}>{row.predicted_power_w.toFixed(2)} W</td>
                       <td className="text-mono" style={errorStyle}>{formattedError}</td>
                       <td>{residualBadge}</td>
                     </tr>
@@ -482,9 +482,9 @@ export const HistoricalTable = ({
                   defaultValue={currentPage}
                   style={{
                     width: 55,
-                    background: 'var(--bg-surface)',
+                    background: '#ffffff',
                     border: '1px solid var(--border-default)',
-                    color: '#ffffff',
+                    color: 'var(--text-primary)',
                     padding: '0.25rem 0.35rem',
                     borderRadius: 'var(--radius-sm)',
                     fontSize: '0.76rem',

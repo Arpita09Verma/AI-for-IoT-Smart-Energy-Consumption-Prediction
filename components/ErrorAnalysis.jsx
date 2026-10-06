@@ -55,21 +55,21 @@ export const ErrorAnalysis = ({
       const mid = info ? info.mid : (parseInt(lbl) || 0);
 
       // Severe outlier spikes (|e| >= 20W) -> Red
-      if (Math.abs(mid) >= 20) return 'rgba(239, 68, 68, 0.75)';
-      // Zero error center cluster ([-2W, +2W]) -> Emerald Green
-      if (info && info.isZero) return 'rgba(16, 185, 129, 0.85)';
-      // Negative error (< 0) -> Model Over-predicted (Cyan/Blue)
-      if (mid < 0) return 'rgba(56, 189, 248, 0.65)';
-      // Positive error (> 0) -> Model Under-predicted (Amber/Orange)
-      return 'rgba(245, 158, 11, 0.65)';
+      if (Math.abs(mid) >= 20) return 'rgba(220, 38, 38, 0.8)';
+      // Zero error center cluster ([-2W, +2W]) -> Green
+      if (info && info.isZero) return 'rgba(22, 163, 74, 0.85)';
+      // Negative error (< 0) -> Model Over-predicted (Blue)
+      if (mid < 0) return 'rgba(37, 99, 235, 0.75)';
+      // Positive error (> 0) -> Model Under-predicted (Orange)
+      return 'rgba(245, 158, 11, 0.75)';
     });
 
     const borderColors = binData.labels.map((lbl, idx) => {
       const info = binData.binInfo ? binData.binInfo[idx] : null;
       const mid = info ? info.mid : (parseInt(lbl) || 0);
-      if (Math.abs(mid) >= 20) return '#ef4444';
-      if (info && info.isZero) return '#10b981';
-      if (mid < 0) return '#38bdf8';
+      if (Math.abs(mid) >= 20) return '#dc2626';
+      if (info && info.isZero) return '#16a34a';
+      if (mid < 0) return '#2563eb';
       return '#f59e0b';
     });
 
@@ -93,10 +93,13 @@ export const ErrorAnalysis = ({
         plugins: {
           legend: { display: false },
           tooltip: {
-            backgroundColor: 'rgba(15, 23, 42, 0.95)',
-            borderColor: 'rgba(255, 255, 255, 0.15)',
+            backgroundColor: '#0f172a',
+            titleColor: '#ffffff',
+            bodyColor: '#cbd5e1',
+            borderColor: '#334155',
             borderWidth: 1,
             padding: 12,
+            cornerRadius: 8,
             titleFont: { family: "'JetBrains Mono', monospace", size: 12, weight: 'bold' },
             bodyFont: { size: 12 },
             callbacks: {
@@ -120,11 +123,11 @@ export const ErrorAnalysis = ({
         },
         scales: {
           x: {
-            grid: { color: 'rgba(255, 255, 255, 0.04)' },
+            grid: { color: '#f1f5f9' },
             title: {
               display: true,
               text: '← Over-predicted (Negative Error) | Error in Watts (error_w = actual - predicted) | Under-predicted (Positive Error) →',
-              color: '#94a3b8',
+              color: '#475569',
               font: { size: 11, weight: '500' }
             },
             ticks: {
@@ -134,15 +137,15 @@ export const ErrorAnalysis = ({
             }
           },
           y: {
-            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+            grid: { color: '#f1f5f9' },
             title: {
               display: true,
               text: 'Observations (Count)',
-              color: '#94a3b8',
+              color: '#475569',
               font: { size: 11, weight: '600' }
             },
             ticks: {
-              color: '#94a3b8',
+              color: '#64748b',
               font: { family: "'JetBrains Mono', monospace", size: 10 },
               callback: (v) => v.toLocaleString()
             }
@@ -218,7 +221,7 @@ export const ErrorAnalysis = ({
           value={maeVal}
           unit={maeVal !== 'Unavailable' ? 'W' : ''}
           description="Mean Absolute Error • mae_w"
-          type="actual"
+          type="mae"
           icon={
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
@@ -231,7 +234,7 @@ export const ErrorAnalysis = ({
           value={rmseVal}
           unit={rmseVal !== 'Unavailable' ? 'W' : ''}
           description="Root Mean Squared Error • rmse_w"
-          type="predicted"
+          type="rmse"
           icon={
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M18 20V10M12 20V4M6 20v-6"></path>
@@ -244,7 +247,7 @@ export const ErrorAnalysis = ({
           value={r2Val}
           unit=""
           description="Coefficient of Determination • r2"
-          type="forecast"
+          type="r2"
           icon={
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="12" cy="12" r="10"></circle>
@@ -335,7 +338,7 @@ export const ErrorAnalysis = ({
             {showStaticFallback && (
               <div
                 className="gallery-img-wrap"
-                style={{ display: 'flex', height: 340, background: '#050811', borderRadius: 'var(--radius-md)' }}
+                style={{ display: 'flex', height: 340, background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 'var(--radius-md)' }}
               >
                 <img
                   src="AI_IoT_Project/results/error_distribution.png"

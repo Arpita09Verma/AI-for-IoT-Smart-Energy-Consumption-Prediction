@@ -10,7 +10,7 @@ import React from 'react';
  * - Mobile sidebar toggle button
  */
 export const DashboardHeader = ({
-  telemetryStatus = 'PZEM-004T Online',
+  telemetryStatus = 'Historical Mode — Trained on PZEM-004T Data',
   sampleCount = null,
   isRefreshing = false,
   onRefresh,
@@ -58,15 +58,15 @@ export const DashboardHeader = ({
           <div className="brand-text">
             <h1>AI + IoT Smart Energy Consumption Prediction</h1>
             <p className="dashboard-subtitle">
-              AI-powered electricity demand forecasting and model evaluation dashboard
+              Electricity demand forecasting and model performance
             </p>
           </div>
         </div>
 
         <div className="header-actions">
-          {/* Telemetry Status Indicator Pill */}
-          <div className="status-badge" id="telemetryStatusBadge" title="Real-time telemetry and prediction inference stream">
-            <span className="status-dot"></span>
+          {/* Telemetry Status Indicator Pill - Historical Mode (sensor not live) */}
+          <div className="status-badge status-badge-historical" id="telemetryStatusBadge" title="Data collected offline from PZEM-004T + ESP32 sensor. This is a trained ML model running on historical data, not a live sensor feed.">
+            <span className="status-dot status-dot-historical"></span>
             <span className="status-text text-mono" id="telemetryStatusText">
               {statusText}
             </span>
