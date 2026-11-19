@@ -216,21 +216,6 @@ export const App = () => {
             onRetry={() => dataService.retryFailed()}
           />
 
-          {/* Dashboard Context Banner - explains the dashboard to non-engineers */}
-          <div className="context-banner" role="region" aria-label="Dashboard Overview">
-            <div className="context-banner-icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-              </svg>
-            </div>
-            <div className="context-banner-text">
-              <strong>What is this dashboard?</strong>{' '}
-              This system uses an <strong>AI model (LSTM neural network)</strong> to predict electricity consumption in Watts.
-              {' '}It was trained on real sensor readings from a <strong>PZEM-004T smart energy meter</strong> connected to an ESP32 microcontroller.
-              {' '}The sensor is <strong>not connected live</strong> — all results below are from the trained model running on saved historical data.
-            </div>
-          </div>
-
           {/* Section 1: Overview & 5 Top KPI Cards */}
           <section className="dashboard-section" id="overview-section" aria-label="Overview & Model Evaluation KPI Cards">
             <div className="section-header" style={{marginBottom: '1rem'}}>
@@ -366,36 +351,7 @@ export const App = () => {
             error={errors.csv}
             onRetry={() => dataService.loadTestPredictionsCsv()}
           />
-
-          {/* Section 6: Model Information */}
-          <ModelInfo
-            forecastData={forecastData}
-            metrics={evaluationMetrics}
-          />
-
-          {/* Section 7: AI + IoT Data Pipeline */}
-          <IoTPipeline />
-
-          {/* Section 8: Methodology */}
-          <MethodologySection
-            notes={forecastData?.methodology_notes}
-          />
         </main>
-
-        {/* Dashboard Footer */}
-        <footer className="dashboard-footer" role="contentinfo">
-          <div className="footer-content">
-            <span className="footer-title">AI for IoT Smart Energy Consumption Prediction</span>
-            <span className="footer-separator">&bull;</span>
-            <span className="footer-note">PZEM-004T + ESP32 Smart Meter • Historical Data • Deep LSTM Model • Predictions in Watts (W)</span>
-          </div>
-          <div className="footer-links">
-            <span>Model: <code>LSTM_Power_Forecaster</code></span>
-            <span>Unit: <code>Watts (W)</code></span>
-            <span>Lookback: <code>30 min</code></span>
-            <span>Samples: <code>27,714</code></span>
-          </div>
-        </footer>
       </div>
 
       {/* Image Modal Lightbox */}

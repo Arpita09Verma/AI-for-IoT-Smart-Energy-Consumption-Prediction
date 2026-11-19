@@ -64,14 +64,6 @@ export const DashboardHeader = ({
         </div>
 
         <div className="header-actions">
-          {/* Telemetry Status Indicator Pill - Historical Mode (sensor not live) */}
-          <div className="status-badge status-badge-historical" id="telemetryStatusBadge" title="Data collected offline from PZEM-004T + ESP32 sensor. This is a trained ML model running on historical data, not a live sensor feed.">
-            <span className="status-dot status-dot-historical"></span>
-            <span className="status-text text-mono" id="telemetryStatusText">
-              {statusText}
-            </span>
-          </div>
-
           {/* Fullscreen Toggle Button */}
           <button
             className="btn-icon"
